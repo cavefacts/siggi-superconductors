@@ -1,0 +1,14 @@
+# Vercel
+.vercel
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+
+# Only here if you later add tooling
+node_modules/

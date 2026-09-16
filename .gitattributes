@@ -1,0 +1,14 @@
+# Normalize text to LF in the repo so what Vercel serves is consistent
+# regardless of which machine committed it.
+* text=auto eol=lf
+
+# Binary assets: never touch these.
+*.woff2 binary
+*.woff  binary
+*.ttf   binary
+*.jpg   binary
+*.jpeg  binary
+*.JPG   binary
+*.png   binary
+*.gif   binary
+*.ico   binary

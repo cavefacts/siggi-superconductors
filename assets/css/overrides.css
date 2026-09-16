@@ -1,0 +1,49 @@
+/* ---------------------------------------------------------------
+   Static-mirror overrides.
+   Squarespace's site-bundle.js normally removes .preFade and fades
+   content in. That bundle is not shipped here, so pin everything to
+   its final visible state instead.
+   --------------------------------------------------------------- */
+.preFade,
+[data-animation-role] {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  clip-path: none !important;
+}
+
+/* `animation: hideContent 2s` keeps header/footer/sections at opacity 0 until
+   that same bundle flags the page as booted. Belt and braces alongside the
+   data-animation-state="booted" attribute baked into <body>. */
+header,
+footer,
+section > .content-wrapper,
+.page-section > .content-wrapper {
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+/* acumin-pro is delivered by Adobe Fonts (Typekit), which may stop serving this
+   domain if the Squarespace subscription lapses. Every font in the theme resolves
+   through these few custom properties, so extending them here gives the whole
+   site a sane fallback instead of the browser default.
+   Inknut Antiqua is self-hosted and should always load; the serif stack is
+   just insurance. */
+:root,
+.sqs-body-font,
+.site-wrapper,
+.sqs-catalog-item-list {
+  --body-font-font-family: "acumin-pro", "Helvetica Neue", Helvetica, Arial, "Segoe UI", system-ui, sans-serif;
+  --meta-font-font-family: var(--body-font-font-family);
+  --header-button-font-font-family: var(--body-font-font-family);
+  --primary-button-font-font-family: var(--body-font-font-family);
+  --secondary-button-font-font-family: var(--body-font-font-family);
+  --tertiary-button-font-font-family: var(--body-font-font-family);
+  --heading-font-font-family: "Inknut Antiqua", Georgia, "Times New Roman", serif;
+}
+
+/* Squarespace's cart badge has nothing to count on a static site. */
+.sqs-cart-dropzone,
+.header-actions-action--cart {
+  display: none !important;
+}
